@@ -29,7 +29,7 @@ public class gui extends text{
 	public JButton b6;
 	public JButton b7;
 	public JButton b8;
-	public JButton s2;//定义功能按键
+	public JButton s2;
 	
 	public JTextField textField;
 	public JTextField textField2;
