@@ -84,7 +84,7 @@ public class gui extends text{
 			
 			
 		    b1 = new JButton("确认");
-		    textField = new JTextField("请输入文件地址");
+		    textField = new JTextField("请输入地址");
 			b1.setBounds(80,40,100,20);
 			textField.setBounds(0, 0, 300, 20);
 			
