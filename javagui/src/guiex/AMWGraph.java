@@ -5,7 +5,7 @@ import java.lang.*;
 
 public class AMWGraph {
 	public String[] vertex;
-	public int numvertex;//存储点的个数
+	public int numvertex;
 	public int[][] edges;
 	public int numOfEdges;//边的数目
 

@@ -5,7 +5,7 @@ import java.util.*;
 public class Floyd {
 	 /*
 	  * 给出一个含有n个顶点的带权有向图，要求其每一对顶点之间的最短路径。
-	  * 这里采用佛洛依德(Floyd)最短路径算法：
+	  * 
 	  */
 
 	 private static int max=Integer.MAX_VALUE;
