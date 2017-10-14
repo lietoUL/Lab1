@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.Stack;
 
 public class GraphViz {
-	private String runPath = "";                      //文件的路径
+	private String runPath = "";                     
 	private String dotPath = "";
 	private String runOrder = "";
 	private String dotCodeFile = "graph.dot";
