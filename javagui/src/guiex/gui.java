@@ -46,14 +46,15 @@ public class gui extends text{
 	 gui()
 	{
 		    
-		    frame = new JFrame("lab1");
+		 	frame = new JFrame("lab1");
 			frame.setLayout(null);
 			
 			
 			function1  = new JPanel();
 			function1.setLayout(null);
 			function1.setBounds(0, 0, 300, 100);
-			function1.setBorder(BorderFactory.createRaisedBevelBorder());;
+			function1.setBorder(BorderFactory.createRaisedBevelBorder());
+			
 			function2  = new JPanel();
 			function2.setLayout(null);
 			function2.setBounds(0,100, 300, 100);
@@ -78,9 +79,6 @@ public class gui extends text{
 			function6.setLayout(null);
 			function6.setBounds(0, 500, 300, 100);
 			function6.setBorder(BorderFactory.createRaisedBevelBorder());
-			
-			
-			
 			
 			
 		    b1 = new JButton("确认");
@@ -151,7 +149,6 @@ public class gui extends text{
 	private void func2(ArrayList<String> s)
 	{
 		JFrame frame_Newtext = new JFrame("生成结果");
-   
     	JTextArea t4 = new JTextArea(3,10);
     	JScrollPane scroll = new JScrollPane(t4);
     	t4.setBounds(0,0,500,100);
@@ -161,9 +158,9 @@ public class gui extends text{
     	frame_Newtext.setBounds(500,300,500,200);
     	frame_Newtext.setResizable(true);
     	frame_Newtext.setVisible(true);
-    	for(int c = 0; c < s.size();c++)
+    	for(int c = 0; c < s.size(); c++)
     	{
-    		t4.append(s.get(c)+'\n');
+    		t4.append(s.get(c) + '\n');
     	}
 	}
 	private void grap()
@@ -280,15 +277,13 @@ public class gui extends text{
             	list6 = OnecalcShortestPath(textField6.getText());
             	func2(list6);
             }
-            if(c < te.liste0.size())     {
-            if (buttonName.equals("查看图片")) {
-            	ImageIcon p_new = new ImageIcon();
-  	    		p_new = new ImageIcon("D:/workspace/javagui/"+te.liste0.get(c++)+".jpg/");
-  	            
-            	grap3(p_new);
-            }
+            if(c < te.liste0.size()){
+            	if (buttonName.equals("查看图片")) {
+            		ImageIcon p_new = new ImageIcon();
+            		p_new = new ImageIcon("D:/workspace/javagui/"+te.liste0.get(c++)+".jpg/");
+  	                grap3(p_new);
+                }
             } 
-            
         }
     }
 	
@@ -308,7 +303,6 @@ public class gui extends text{
 		function2.add(b2);
        
 		frame.add(function2);//功能二的各项组件及内容面板
-		
 		
 		function3.add(textField5);
 		function3.add(b3);

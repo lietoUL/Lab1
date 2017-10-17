@@ -5,7 +5,7 @@ import java.lang.*;
 import java.util.*;
 
 public class text {
-	private static int max=Integer.MAX_VALUE;        
+	private static int MAX = Integer.MAX_VALUE;        
 	public static AMWGraph graph ;                   //声明一个存储有向图的类的全局变量
 	public static String strle;
 	public static String sureth;
@@ -20,7 +20,6 @@ public class text {
 		//Short_path tmpPath = spath.clone();
 		Stack tmpPath;
 		tmpPath = (Stack<String>)stack.clone();         //将栈完全赋予给tmpPath 
-		//int i = 0;
 		pr.clearTmpDotFile( pictureName + ".dot");//
 		//while (tmpPath != null) {
 			pr.setColorForPath(tmpPath,
@@ -79,7 +78,8 @@ public class text {
 					}
 				}
 				//System.out.print((char)rs);
-				}fReader.close();
+				}
+			fReader.close();
 				String[] str2 = list.toArray(new String[list.size()]);//将集合类转换为数组
 				/*for(String z:strarray) {
 					if(z != null) {
@@ -99,14 +99,14 @@ public class text {
 	}
 	
 	public static void showDirectedGraph(AMWGraph G) {    //生成有向图的图片，并且存储进硬盘中
-		String cur_word=null;
-		String word=null;
+		String cur_word = null;
+		String word = null;
 		//Node tmp_node=null;
 		GraphViz gViz = new GraphViz("dot.exe");
 		gViz.start_graph();                  //.dot文件的开端
-		for(int num = 0;num < G.numvertex;num ++) {     //.dot内容撰写
-			for(int num1 = 0;num1 < G.numvertex;num1 ++) {
-				if(G.edges[num][num1]!=0) {
+		for(int num = 0; num < G.numVertex; num++) {     //.dot内容撰写
+			for(int num1 = 0; num1 < G.numVertex; num1 ++) {
+				if(G.edges[num][num1] != 0) {
 					word = G.vertex[num];
 					cur_word = G.vertex[num1];
 					gViz.addln("\"" + word + "\"->\"" + cur_word + "\"",
@@ -125,14 +125,14 @@ public class text {
 		}*/
 		gViz.end_graph();            //.dot文件的结尾
 		try {
-		gViz.run();                  //运行这个类
+			gViz.run();                  //运行这个类
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static String queryBridgeWords(String word1, String word2) {     //查找桥接词
-		String strcct = "The bridge words from \""+word1+"\" to "+word2+" are:";
+		String strcct = "The bridge words from \"" + word1 + "\" to " + word2 + " are:";
 		//用来作为返回值的字符串
 		String tsstr;
 		//用来做无桥接词时的字符串
@@ -155,8 +155,8 @@ public class text {
 			}
 		}
 		else {
-			int zum=0;            //用来标记两个字符串之间是否存在桥接词
-			for(int cum = 0;cum<graph.numvertex;cum++) {
+			int zum = 0;            //用来标记两个字符串之间是否存在桥接词
+			for(int cum = 0;cum<graph.numVertex;cum++) {
 				if(graph.edges[rum1][cum]!=0&&graph.edges[cum][rum2]!=0) {
 					zum  = zum + 1;
 					list1.add(cum);     //添加进字符类中
@@ -194,7 +194,7 @@ public class text {
 		for(int cus = 0;cus < inputText.length(); cus++) {
 			if(Character.isLetter(exstr[cus])==false) {
 				//判断是否字符串内全部都是26个英文字母
-				if(zuc!=0) {
+				if(zuc != 0) {
 					System.arraycopy(exstr, zmc , exstr1, 0, zuc);
 					//赋值一定长度数组给另一个数组
 					zmc = zmc + zuc + 1;
@@ -222,7 +222,7 @@ public class text {
 				stresult = stresult+' '+str3[zuc+1];
 			}
 			else {              //加入桥接词的情况
-				stresult = stresult+' '+strle+' '+str3[zuc+1];
+				stresult = stresult+' ' + strle+' ' + str3[zuc+1];
 				strle = null;
 			}
 		}
@@ -235,7 +235,7 @@ public class text {
 		String cureof ;          //最后返回最短路径的字符串
 		int i = Arrays.binarySearch(graph.vertex, word1);
 		int j = Arrays.binarySearch(graph.vertex, word2);
-		if(i<0||j<0) {           //单词不存在的情况
+		if(i < 0||j < 0) {           //单词不存在的情况
 			if(i<0&&j<0) {       //只有一个单词的存在的情况
 				cureof = "No" + "\"" + word1 + "\"" + "and\"" + word2 +"\"";
 			}
@@ -247,7 +247,7 @@ public class text {
 			}
 		}
 		else {
-			stack =new Stack();     //创立一个栈，用来存储最短路径
+			stack = new Stack();     //创立一个栈，用来存储最短路径
 			stack.push(word1);
 			f.findCheapestPath(i, j, graph.edges);
 			/*for(int n = 0;n<10;n++) {
@@ -257,18 +257,18 @@ public class text {
 				}
 				System.out.println();
 			}*/
-			cureof = graph.vertex[i]+"-->"+graph.vertex[j]+"的最短路径：";
+			cureof = graph.vertex[i] + "-->" + graph.vertex[j] + "的最短路径：";
 		    ArrayList<Integer>L=f.list;    //集合类用来存储最短路径上的单词在数组中的下标
 		    cureof = cureof + graph.vertex[L.get(0)];
 		    sureth = graph.vertex[L.get(0)] + "-" + graph.vertex[L.get(L.size() - 1)];
-		    System.out.print(graph.vertex[i]+"-->"+graph.vertex[j]+":");
-		    if(f.dist[i][j]==max){
+		    System.out.print(graph.vertex[i] + "-->" + graph.vertex[j]+":");
+		    if(f.dist[i][j] == MAX){
 		    	cureof = "之间没有最短路径";
-		     System.out.println("之间没有最短路径");
-		    System.out.println();
+		    	System.out.println("之间没有最短路径");
+		    	System.out.println();
 		    }
 		    else{
-		    	for(int cms = 1;cms < L.size(); cms++) {
+		    	for(int cms = 1; cms < L.size(); cms++) {
 		    		cureof = cureof + "->" + graph.vertex[L.get(cms)];
 		    		stack.add(graph.vertex[L.get(cms)]);
 		    	}
@@ -276,10 +276,10 @@ public class text {
 		    	CreatePicture(sureth);
 		    	//cureof = cureof + '\n';
 		    	cureof = cureof + " 路径长度：" + f.dist[i][j];
-		     System.out.println("的最短路径是：");
-		     System.out.print(L.toString()+" ");
-		     System.out.println("路径长度:"+f.dist[i][j]);
-		     System.out.println();             	
+			     System.out.println("的最短路径是：");
+			     System.out.print(L.toString()+" ");
+			     System.out.println("路径长度:" + f.dist[i][j]);
+			     System.out.println();             	
 		   }
 		}
 	return cureof;
@@ -288,9 +288,9 @@ public class text {
 	public static ArrayList<String> OnecalcShortestPath(String word1) {
 		//输入一个单词时的最短路径
 		ArrayList<String>list3 =new ArrayList<String>(); 
-		int m = Arrays.binarySearch(graph.vertex, word1);
-		for(int cus = 0;cus < graph.numvertex;cus++) {
-			if(graph.vertex[cus]!=word1) {
+		//int m = Arrays.binarySearch(graph.vertex, word1);
+		for(int cus = 0; cus < graph.numVertex; cus++) {
+			if(graph.vertex[cus] != word1) {
 				String zuli = calcShortestPath(word1,graph.vertex[cus]);
 				list3.add(zuli);
 			}
@@ -301,36 +301,38 @@ public class text {
 	public static String randomWalk() {
 		//随机游走函数
 		String random = "";
-		int cav = 0 , can = 0 , duo;
+		int cav = 0 ; 
+		int can = 0 ;
+		int duo;
 		ArrayList<Integer>list0 = new ArrayList<Integer>();
-		int []arrty = new int[graph.numvertex];
-		int [][]Sterearray = new int[graph.numvertex][graph.numvertex];
+		int []arrty = new int[graph.numVertex];
+		int [][]Sterearray = new int[graph.numVertex][graph.numVertex];
 		Arrays.fill(arrty, 0);
-		for(int zr = 0;zr<graph.numvertex;zr++) {
+		for(int zr = 0; zr < graph.numVertex; zr++) {
 			Arrays.fill(Sterearray[zr], 0);
 		}
-		int index = (int) (Math.random() * graph.numvertex);
+		int index = (int) (Math.random() * graph.numVertex);
 		random = graph.vertex[index];
 		arrty[index] = 1;
 		duo = index;
 		while(cav!=1 && can!=1) {
 			int tuo ;
 			list0.clear();             //清空集合类内的内容
-			for(tuo = 0;tuo < graph.numvertex;tuo++) {
-				if(graph.edges[duo][tuo]!=0) {
+			for(tuo = 0; tuo < graph.numVertex; tuo++) {
+				if(graph.edges[duo][tuo] != 0) {
 					list0.add(tuo);
 				}
 			}
-			if(list0.size()==0) {
+			if(list0.size() == 0) {
 				can = 1;
 			}
 			else {
 				int index1 = (int) (Math.random() * list0.size());
-				if(Sterearray[duo][index1]==1) {
+				if(Sterearray[duo][index1] == 1) {
 					cav = 1;
 				}
 				else {
-					Sterearray[duo][list0.get(index1)]=1;
+					Sterearray[duo][list0.get(index1)] = 1;
 					random = random + " " + graph.vertex[list0.get(index1)];
 					duo = list0.get(index1);
 				}
