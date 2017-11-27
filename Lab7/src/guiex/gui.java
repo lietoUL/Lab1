@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class gui extends text{
+public class gui {
 	public static int num = 0;
 	public List<String> liste1 = new ArrayList<String>();
 	public JFrame frame;
